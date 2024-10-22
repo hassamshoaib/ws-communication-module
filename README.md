@@ -47,4 +47,4 @@ This project is a React application demonstrating the implementation of a generi
 - Use this pattern when you need a single WebSocket connection shared across multiple tabs to reduce overhead.
 - Ensure that service workers are registered properly for your application, especially during deployment.
 - Implement reconnection logic for the WebSocket in case of connection drops.
-- Support for managing multiple WebSocket connections across different tabs.
+- Support for managing multiple WebSocket connections for different web socket URL's.
