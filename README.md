@@ -29,8 +29,8 @@ This project is a React application demonstrating the implementation of a generi
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd <project-directory>
+   git clone https://github.com/hassamshoaib/ws-communication-module.git
+   cd ws-communication-module
    ```
 
 2. Install dependencies:
