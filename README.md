@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# React Application with Generic Service Worker and WebSocket Module
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a React application demonstrating the implementation of a generic service worker and a WebSocket module. The application enables communication between multiple browser tabs using a shared WebSocket connection. Each tab can send and receive messages through the service worker, which acts as a messaging bus between the tabs and a WebSocket server. The WebSocket connection is maintained and shared across all tabs for optimal performance, reducing the overhead of multiple WebSocket connections.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Single WebSocket Connection**: A shared WebSocket connection is maintained across all browser tabs.
+- **Service Worker Integration**: The service worker is responsible for broadcasting messages between all connected tabs and managing the WebSocket connection.
+- **Tab Synchronization**: All browser tabs share the same state for WebSocket communication. If one tab sends a message, all others receive it via the service worker.
+- **Modular Design**: The WebSocket module is designed to be reusable, allowing for easy integration into other projects.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Key Files
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `src/websocket-module/WebSocketModule.js`: Contains the WebSocket module which handles WebSocket creation, registration of the service worker, and communication setup.
+- `public/ServiceWorker.js`: The service worker file that handles WebSocket communication and inter-tab messaging.Keep it under public folder to have a root scope.
+- `src/components/App.js`: The main React component where the WebSocketModule is initialized and demonstrates communication between multiple tabs.
 
-### `npm test`
+## Setup Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js (>= 14.x.x)
+- npm (>= 6.x.x) or yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone <repository-url>
+   cd <project-directory>
+   ```
 
-### `npm run eject`
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the application:
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Best Practices
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Use this pattern when you need a single WebSocket connection shared across multiple tabs to reduce overhead.
+- Ensure that service workers are registered properly for your application, especially during deployment.
+- Implement reconnection logic for the WebSocket in case of connection drops.
+- Support for managing multiple WebSocket connections across different tabs.
